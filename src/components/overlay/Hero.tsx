@@ -50,7 +50,7 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.6, duration: 1.1 }}
           >
-            <p>Soy Juan Esteban Deossa, de Sapzurro, Chocó.</p>
+            <p>Soy Juan Esteban Deossa Pertuz, de Medellín, Antioquia — con raíces en Sapzurro, Chocó.</p>
             <p>Llegué al límite del software. Ahora voy por los átomos.</p>
             <p className="text-ink-faint">
               El plan que enciendo con Potencia E e Ingeniería Física en EAFIT.

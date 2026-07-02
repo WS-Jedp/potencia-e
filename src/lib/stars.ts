@@ -64,7 +64,7 @@ export interface StarData {
 //     name: "La Forja",
 //     tagline: "Potencia E y yo",
 //     represents: "Juan Esteban + Potencia E — origen y catalizador.",
-//     body: "Aquí nace todo. Soy Juan Esteban Deossa, de Sapzurro, Chocó. Llegué a un límite donde el software ya no bastaba: las líneas de código cambian experiencias, pero no cambian la materia ni la energía que sostiene la vida de una comunidad. Potencia E es el vehículo que remueve la barrera económica y me permite entrar a Ingeniería Física en EAFIT con la cabeza y el corazón completamente libres para forjar.",
+//     body: "Aquí nace todo. Soy Juan Esteban Deossa Pertuz, de Sapzurro, Chocó. Llegué a un límite donde el software ya no bastaba: las líneas de código cambian experiencias, pero no cambian la materia ni la energía que sostiene la vida de una comunidad. Potencia E es el vehículo que remueve la barrera económica y me permite entrar a Ingeniería Física en EAFIT con la cabeza y el corazón completamente libres para forjar.",
 //     points: [
 //       "Mi límite no fue técnico, fue existencial: del universo digital a los átomos.",
 //       "Potencia E no es un crédito tradicional: es una alianza de mutualidad.",
@@ -256,11 +256,11 @@ export const STARS: StarData[] = [
     name: "Soberanía",
     tagline: "Sapzurro como modelo vivo",
     represents: "Energía limpia y defensa para la comunidad.",
-    body: "Este es el corazón que late detrás de todo. Quiero construir un modelo de soberanía tecnológica y energética que comience en Sapzurro: sistemas limpios, autosuficientes y replicables, donde el electromagnetismo, la energía solar y la marítima se integren con capacidad real de defensa comunitaria. Porque cuando una comunidad tiene energía, tiene acceso al conocimiento, a la conexión y a la posibilidad de proteger su propia libertad. Sapzurro no es solo un origen: es el primer territorio donde esta visión debe volverse carne y realidad.",
+    body: "Este es el corazón que late detrás de todo. Quiero construir un modelo de soberanía tecnológica y energética que comience en Sapzurro — donde están mis raíces materna: sistemas limpios, autosuficientes y replicables, donde el electromagnetismo, la energía solar y la marítima se integren con capacidad real de defensa comunitaria. Porque cuando una comunidad tiene energía, tiene acceso al conocimiento, a la conexión y a la posibilidad de proteger su propia libertad. Sapzurro no es mi ciudad natal, pero sí el primer territorio donde esta visión debe volverse carne y realidad.",
     points: [
       "Un modelo de soberanía energética basado en electromagnetismo y energías limpias.",
       "Autosuficiente, replicable y con capacidad de defensa comunitaria.",
-      "Sapzurro como primer territorio donde la visión se hace realidad.",
+      "Sapzurro — mis raíces materna — como primer territorio donde la visión se hace realidad.",
       "Progreso que protege, defiende y devuelve dignidad.",
     ],
     priority: "Alta",
