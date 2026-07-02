@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Fraunces, Manrope } from "next/font/google";
+import { getSiteUrl, siteConfig } from "@/lib/site";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -18,13 +19,52 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Ignición · Potencia E y yo",
-  description:
-    "Una experiencia estelar del Plan Celestial de Juan Esteban Deossa: de Sapzurro a la soberanía energética, forjando el futuro con Potencia E e Ingeniería Física en EAFIT.",
+  metadataBase: new URL(getSiteUrl()),
+  title: {
+    default: siteConfig.title,
+    template: `%s · ${siteConfig.shortTitle}`,
+  },
+  description: siteConfig.description,
+  applicationName: siteConfig.name,
+  keywords: [...siteConfig.keywords],
+  authors: [{ name: siteConfig.author }],
+  creator: siteConfig.author,
+  publisher: "Universidad EAFIT",
+  category: "education",
+  alternates: {
+    canonical: "/",
+  },
   icons: {
-    icon: "/eafit-logo.webp",
-    shortcut: "/eafit-logo.webp",
-    apple: "/eafit-logo.webp",
+    icon: siteConfig.favicon,
+    shortcut: siteConfig.favicon,
+    apple: siteConfig.favicon,
+  },
+  openGraph: {
+    type: "website",
+    locale: siteConfig.locale,
+    url: "/",
+    siteName: siteConfig.name,
+    title: siteConfig.title,
+    description: siteConfig.description,
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: siteConfig.ogImageWidth,
+        height: siteConfig.ogImageHeight,
+        alt: siteConfig.ogImageAlt,
+        type: "image/png",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.title,
+    description: siteConfig.description,
+    images: [siteConfig.ogImage],
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
@@ -32,6 +72,7 @@ export const viewport: Viewport = {
   themeColor: "#04040a",
   width: "device-width",
   initialScale: 1,
+  colorScheme: "dark",
 };
 
 export default function RootLayout({
