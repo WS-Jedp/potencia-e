@@ -1,26 +1,202 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-0: #04040a;
+  --bg-1: #0a0a18;
+  --ink: #f4f1ea;
+  --ink-soft: #b9b4c7;
+  --ink-faint: #6f6a82;
+  --ember: #ff9d2f;
+  --ember-soft: #ffd27d;
+  --gold: #fff4d6;
+  --line: rgba(255, 255, 255, 0.1);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg-0: var(--bg-0);
+  --color-bg-1: var(--bg-1);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
+  --color-ember: var(--ember);
+  --color-ember-soft: var(--ember-soft);
+  --color-gold: var(--gold);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-0);
+  color: var(--ink);
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overscroll-behavior: none;
+}
+
+.font-display {
+  font-family: var(--font-display), Georgia, serif;
+}
+
+/* ---------------------------------------------------------------------------
+   Layered film grain / noise (rendered by <Grain />). Several stacked layers
+   give a richer, more cinematic texture than a single static overlay:
+   - fine: fast-flickering high-frequency grain (classic film grain)
+   - coarse: slow-drifting low-frequency noise (organic "dust" / atmosphere)
+   - flicker: a very subtle luminance wobble over everything
+--------------------------------------------------------------------------- */
+.grain-root {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.grain-layer {
+  position: absolute;
+  inset: -60%;
+  width: 220%;
+  height: 220%;
+  background-repeat: repeat;
+  will-change: transform;
+}
+
+/* Fine, fast grain */
+.grain-fine {
+  opacity: 0.08;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+  animation: grain-fine 0.6s steps(5) infinite;
+}
+
+/* Coarse, slow drifting noise for atmosphere */
+.grain-coarse {
+  opacity: 0.05;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='320'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.22' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 360px 360px;
+  animation: grain-coarse 26s ease-in-out infinite alternate;
+}
+
+/* Whole-screen luminance flicker, very subtle */
+.grain-flicker {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.012);
+  mix-blend-mode: overlay;
+  animation: grain-flicker 7s steps(3) infinite;
+}
+
+/* Vignette to focus attention toward the center. */
+.vignette::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  background: radial-gradient(
+    120% 120% at 50% 42%,
+    transparent 45%,
+    rgba(2, 2, 8, 0.55) 100%
+  );
+}
+
+::selection {
+  background: rgba(255, 157, 47, 0.3);
+  color: #fff;
+}
+
+/* Thin elegant scrollbars inside panels. */
+.scroll-elegant {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
+}
+.scroll-elegant::-webkit-scrollbar {
+  width: 6px;
+}
+.scroll-elegant::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+}
+
+@keyframes grain-fine {
+  0% {
+    transform: translate(0, 0);
+  }
+  20% {
+    transform: translate(-7%, 5%);
+  }
+  40% {
+    transform: translate(6%, -6%);
+  }
+  60% {
+    transform: translate(-5%, 7%);
+  }
+  80% {
+    transform: translate(7%, 3%);
+  }
+  100% {
+    transform: translate(0, 0);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes grain-coarse {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(-8%, -5%) scale(1.12);
+  }
+}
+
+@keyframes grain-flicker {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  33% {
+    opacity: 0.85;
+  }
+  66% {
+    opacity: 0.35;
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.92);
+    opacity: 0.7;
+  }
+  70% {
+    transform: scale(1.25);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes drift {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.05ms !important;
+  }
 }
