@@ -1,7 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { Fraunces, Manrope } from "next/font/google";
-import { getSiteUrl, siteConfig } from "@/lib/site";
+import { absoluteUrl, getSiteUrl, siteConfig } from "@/lib/site";
 import "./globals.css";
+
+const siteUrl = getSiteUrl();
+const ogImageUrl = absoluteUrl(siteConfig.ogImage);
 
 const fraunces = Fraunces({
   variable: "--font-display",
@@ -19,7 +22,7 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(getSiteUrl()),
+  metadataBase: new URL(siteUrl),
   title: {
     default: siteConfig.title,
     template: `%s · ${siteConfig.shortTitle}`,
@@ -32,23 +35,24 @@ export const metadata: Metadata = {
   publisher: "Universidad EAFIT",
   category: "education",
   alternates: {
-    canonical: "/",
+    canonical: siteUrl,
   },
   icons: {
-    icon: siteConfig.favicon,
+    icon: [{ url: siteConfig.favicon, type: "image/webp" }],
     shortcut: siteConfig.favicon,
     apple: siteConfig.favicon,
   },
   openGraph: {
     type: "website",
     locale: siteConfig.locale,
-    url: "/",
+    url: siteUrl,
     siteName: siteConfig.name,
     title: siteConfig.title,
     description: siteConfig.description,
     images: [
       {
-        url: siteConfig.ogImage,
+        url: ogImageUrl,
+        secureUrl: ogImageUrl,
         width: siteConfig.ogImageWidth,
         height: siteConfig.ogImageHeight,
         alt: siteConfig.ogImageAlt,
@@ -60,7 +64,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteConfig.title,
     description: siteConfig.description,
-    images: [siteConfig.ogImage],
+    images: [ogImageUrl],
   },
   robots: {
     index: true,
