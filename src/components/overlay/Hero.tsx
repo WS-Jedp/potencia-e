@@ -32,7 +32,7 @@ export function Hero() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
           >
-            La Forja
+            Ignición
           </motion.h1>
 
           <motion.p

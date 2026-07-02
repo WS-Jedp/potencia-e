@@ -35,7 +35,7 @@ export function Hud() {
                 <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-ember-soft" />
               </span>
               <span className="font-display text-sm tracking-wide text-ink-soft transition-colors group-hover:text-ink">
-                La Forja
+                Ignición
               </span>
             </button>
           </div>

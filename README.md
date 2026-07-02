@@ -1,4 +1,4 @@
-# La Forja · Potencia E y yo
+# Ignición · Potencia E y yo
 
 Experiencia web cinematográfica del **Plan Celestial** de Juan Esteban Deossa,
 construida como herramienta personal y de pitch para la entrevista de
@@ -13,7 +13,7 @@ visión, explorable de forma guiada (para el pitch) o libre.
 
 | Estrella | Representa |
 |----------|-----------|
-| **La Forja** (central) | Juan Esteban + Potencia E · origen y catalizador |
+| **Ignición** (central) | Juan Esteban + Potencia E · origen y catalizador |
 | **El Ahora** | Potencia E, inicio de Ingeniería Física y disciplina diaria |
 | **Los Motores** | Context y Coffi como prueba de ejecución |
 | **Los Fundamentos** | GEMA, Cohetería y la física fundamental |
@@ -22,7 +22,7 @@ visión, explorable de forma guiada (para el pitch) o libre.
 
 ## Flujo
 
-1. **Apertura (Hero):** solo la estrella central, con título *La Forja* y la
+1. **Apertura (Hero):** solo la estrella central, con título *Ignición* y la
    introducción. Botón **Iniciar el Viaje**.
 2. **Expansión:** las estrellas nacen y emergen desde el centro.
 3. **Exploración:**

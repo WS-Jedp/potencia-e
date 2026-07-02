@@ -177,7 +177,7 @@ export const STARS: StarData[] = [
   {
     id: "forja",
     index: 0,
-    name: "La Forja",
+    name: "Ignición",
     tagline: "Potencia E y yo",
     represents: "Juan Esteban + Potencia E — origen y catalizador.",
     body: "Llegué a un punto donde las líneas de código ya no alcanzaban a tocar la materia que sostiene la vida de una comunidad. El universo digital me había dado herramientas poderosas, pero no bastaban para transformar realidades como la de Sapzurro. Por eso elijo Ingeniería Física en EAFIT. Potencia E aparece como la alianza que disuelve la barrera económica y me permite entrar a este camino con la cabeza y el corazón completamente libres para forjar. No es un préstamo: es un pacto de mutualidad donde apuesto por mi capacidad futura de generar valor.",

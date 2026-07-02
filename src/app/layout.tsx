@@ -18,9 +18,14 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "La Forja · Potencia E y yo",
+  title: "Ignición · Potencia E y yo",
   description:
     "Una experiencia estelar del Plan Celestial de Juan Esteban Deossa: de Sapzurro a la soberanía energética, forjando el futuro con Potencia E e Ingeniería Física en EAFIT.",
+  icons: {
+    icon: "/eafit-logo.webp",
+    shortcut: "/eafit-logo.webp",
+    apple: "/eafit-logo.webp",
+  },
 };
 
 export const viewport: Viewport = {
